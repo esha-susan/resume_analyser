@@ -14,7 +14,7 @@ genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 model = genai.GenerativeModel('gemini-2.5-flash')
 
 def analyze_with_ai(resume_text, job_desc):
-    # Use your EXACT working prompt from Colab [cite: 11-27]
+    # Use your EXACT working prompt from Colab 
     prompt = f"""
 You are a professional Recruitment AI Agent.
 Analyze the match between the Job Description and the Resume provided.
