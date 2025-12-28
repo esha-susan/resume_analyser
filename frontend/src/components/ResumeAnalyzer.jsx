@@ -40,7 +40,7 @@ export default function ResumeAnalyzer() {
     formData.append('job_description', jobDescription);
 
     try {
-      // Connects to your Python server running the analyze_with_ai logic [cite: 10, 49]
+      
       const response = await axios.post('http://localhost:5000/api/analyze', formData);
       
       // Successfully sets the raw text report from the agent [cite: 30, 53]

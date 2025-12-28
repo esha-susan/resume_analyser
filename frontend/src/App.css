@@ -106,7 +106,7 @@ html, body, #root {
 
 /* Input Areas */
 .textarea {
-  width: 100%;
+  width: 90%;
   height: 250px;
   padding: 1rem;
   border-radius: 0.5rem;
@@ -118,7 +118,7 @@ html, body, #root {
 }
 
 .upload-area {
-  height: 250px;
+  height: 300px;
   border: 2px dashed #475569;
   border-radius: 0.5rem;
   display: flex;

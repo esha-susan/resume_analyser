@@ -9,12 +9,12 @@ load_dotenv()
 app = Flask(__name__)
 CORS(app)
 
-# RESTORE YOUR WORKING MODEL [cite: 8-9]
+
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 model = genai.GenerativeModel('gemini-2.5-flash')
 
 def analyze_with_ai(resume_text, job_desc):
-    # Use your EXACT working prompt from Colab 
+    
     prompt = f"""
 You are a professional Recruitment AI Agent.
 Analyze the match between the Job Description and the Resume provided.
@@ -25,14 +25,19 @@ JOB DESCRIPTION:
 RESUME TEXT:
 {resume_text}
 
+Make sure that the response is crisp but accurate.
 Please provide the output in this EXACT format:
 OVERALL MATCH: [Percentage]%
+
 TECHNICAL GAP ANALYSIS:
 - [List specific missing hard skills]
+
 SOFT SKILLS & QUALIFICATIONS:
 [Mention gaps]
+
 AI IMPROVEMENT PLAN:
 - [Actionable steps]
+
 GRAMMAR & PROFESSIONALISM:
 - [Score out of 10]
 """
@@ -46,7 +51,7 @@ def analyze_resume():
         resume_file = request.files['resume']
         job_description = request.form['job_description']
         
-        # Extract text using fitz (PyMuPDF) as you did in Colab [cite: 44-46]
+        
         doc = fitz.open(stream=resume_file.read(), filetype="pdf")
         text = "".join([page.get_text() for page in doc])
         
@@ -55,5 +60,5 @@ def analyze_resume():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 if __name__ == '__main__':
-    # Running on 5000 as per your previous setup
-    app.run(debug=True, host='0.0.0.0', port=5000)
+
+    app.run(debug=True, host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))
