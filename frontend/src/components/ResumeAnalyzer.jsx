@@ -41,7 +41,7 @@ export default function ResumeAnalyzer() {
 
     try {
       
-      const response = await axios.post('http://localhost:5000/api/analyze', formData);
+      const response = await axios.post('https://resume-analyzer-backend-api.onrender.com/api/analyze', formData);
       
       // Successfully sets the raw text report from the agent [cite: 30, 53]
       setResult(response.data.analysis);
